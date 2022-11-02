@@ -18,6 +18,13 @@
 		D7B774EA2911FC990000DB67 /* RecipeSearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774E92911FC990000DB67 /* RecipeSearchAppTests.swift */; };
 		D7B774F42911FC990000DB67 /* RecipeSearchAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774F32911FC990000DB67 /* RecipeSearchAppUITests.swift */; };
 		D7B774F62911FC990000DB67 /* RecipeSearchAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774F52911FC990000DB67 /* RecipeSearchAppUITestsLaunchTests.swift */; };
+		D7B77510291208B40000DB67 /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7750E291208B40000DB67 /* SearchEmptyView.swift */; };
+		D7B77511291208B40000DB67 /* SearchEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7B7750F291208B40000DB67 /* SearchEmptyView.xib */; };
+		D7B7751529120FE60000DB67 /* ProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7751429120FE60000DB67 /* ProviderExtension.swift */; };
+		D7B775182912138A0000DB67 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B775172912138A0000DB67 /* NetworkResponse.swift */; };
+		D7B7751A291213DD0000DB67 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B77519291213DD0000DB67 /* NetworkError.swift */; };
+		D7B7751C2912258D0000DB67 /* RecipeSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7751B2912258D0000DB67 /* RecipeSearchAPI.swift */; };
+		D7B7751E291226720000DB67 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7751D291226720000DB67 /* Configuration.swift */; };
 		D9C524C2C5EF2C4D82F0B7E3 /* Pods_RecipeSearchAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135717CBB3C08239DF425D64 /* Pods_RecipeSearchAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +68,13 @@
 		D7B774EF2911FC990000DB67 /* RecipeSearchAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeSearchAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B774F32911FC990000DB67 /* RecipeSearchAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchAppUITests.swift; sourceTree = "<group>"; };
 		D7B774F52911FC990000DB67 /* RecipeSearchAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D7B7750E291208B40000DB67 /* SearchEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
+		D7B7750F291208B40000DB67 /* SearchEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchEmptyView.xib; sourceTree = "<group>"; };
+		D7B7751429120FE60000DB67 /* ProviderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderExtension.swift; sourceTree = "<group>"; };
+		D7B775172912138A0000DB67 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		D7B77519291213DD0000DB67 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		D7B7751B2912258D0000DB67 /* RecipeSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchAPI.swift; sourceTree = "<group>"; };
+		D7B7751D291226720000DB67 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +125,6 @@
 				BC2E576F09AC5028BD865065 /* Pods-RecipeSearchAppTests.debug.xcconfig */,
 				B0E9789C5DBF0B3F9091C12C /* Pods-RecipeSearchAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,11 +153,13 @@
 		D7B774D12911FC930000DB67 /* RecipeSearchApp */ = {
 			isa = PBXGroup;
 			children = (
-				D7B774D22911FC930000DB67 /* AppDelegate.swift */,
-				D7B774D42911FC930000DB67 /* SceneDelegate.swift */,
+				D7B7750C291207CC0000DB67 /* Scenes */,
+				D7B7750B291207C10000DB67 /* Models */,
+				D7B77507291207890000DB67 /* Network */,
+				D7B77503291206980000DB67 /* Support */,
+				D7B775022912065D0000DB67 /* AppDelegate */,
 				D7B774D62911FC930000DB67 /* ViewController.swift */,
 				D7B774D82911FC930000DB67 /* Main.storyboard */,
-				D7B774DB2911FC980000DB67 /* Assets.xcassets */,
 				D7B774DD2911FC980000DB67 /* LaunchScreen.storyboard */,
 				D7B774E02911FC980000DB67 /* Info.plist */,
 			);
@@ -168,6 +183,131 @@
 			path = RecipeSearchAppUITests;
 			sourceTree = "<group>";
 		};
+		D7B775022912065D0000DB67 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D7B774D22911FC930000DB67 /* AppDelegate.swift */,
+				D7B774D42911FC930000DB67 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		D7B77503291206980000DB67 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				D7B775062912072E0000DB67 /* Configuration */,
+				D7B77505291206B60000DB67 /* Resources */,
+				D7B77504291206A50000DB67 /* Extensions */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		D7B77504291206A50000DB67 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D7B77505291206B60000DB67 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D7B774DB2911FC980000DB67 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D7B775062912072E0000DB67 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				D7B7751D291226720000DB67 /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		D7B77507291207890000DB67 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D7B7750A291207B00000DB67 /* NetworkExtension */,
+				D7B77509291207A40000DB67 /* CommonModels */,
+				D7B77508291207910000DB67 /* APIs */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D7B77508291207910000DB67 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				D7B7751B2912258D0000DB67 /* RecipeSearchAPI.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		D7B77509291207A40000DB67 /* CommonModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CommonModels;
+			sourceTree = "<group>";
+		};
+		D7B7750A291207B00000DB67 /* NetworkExtension */ = {
+			isa = PBXGroup;
+			children = (
+				D7B7751429120FE60000DB67 /* ProviderExtension.swift */,
+			);
+			path = NetworkExtension;
+			sourceTree = "<group>";
+		};
+		D7B7750B291207C10000DB67 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D7B77516291213680000DB67 /* NetworkModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D7B7750C291207CC0000DB67 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D7B77513291208D50000DB67 /* Presenter */,
+				D7B77512291208CD0000DB67 /* Cell */,
+				D7B7750D291208A10000DB67 /* SearchEmptyView */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D7B7750D291208A10000DB67 /* SearchEmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				D7B7750E291208B40000DB67 /* SearchEmptyView.swift */,
+				D7B7750F291208B40000DB67 /* SearchEmptyView.xib */,
+			);
+			path = SearchEmptyView;
+			sourceTree = "<group>";
+		};
+		D7B77512291208CD0000DB67 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D7B77513291208D50000DB67 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D7B77516291213680000DB67 /* NetworkModels */ = {
+			isa = PBXGroup;
+			children = (
+				D7B775172912138A0000DB67 /* NetworkResponse.swift */,
+				D7B77519291213DD0000DB67 /* NetworkError.swift */,
+			);
+			path = NetworkModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -179,6 +319,7 @@
 				D7B774CB2911FC930000DB67 /* Sources */,
 				D7B774CC2911FC930000DB67 /* Frameworks */,
 				D7B774CD2911FC930000DB67 /* Resources */,
+				33B17B2ABB12C5D890ACB35D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,6 +357,7 @@
 				D7B774EB2911FC990000DB67 /* Sources */,
 				D7B774EC2911FC990000DB67 /* Frameworks */,
 				D7B774ED2911FC990000DB67 /* Resources */,
+				613449A1D8661B791B29E60A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -275,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B77511291208B40000DB67 /* SearchEmptyView.xib in Resources */,
 				D7B774DF2911FC980000DB67 /* LaunchScreen.storyboard in Resources */,
 				D7B774DC2911FC980000DB67 /* Assets.xcassets in Resources */,
 				D7B774DA2911FC930000DB67 /* Main.storyboard in Resources */,
@@ -320,6 +463,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		33B17B2ABB12C5D890ACB35D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipeSearchApp/Pods-RecipeSearchApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipeSearchApp/Pods-RecipeSearchApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecipeSearchApp/Pods-RecipeSearchApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		512E13CE83C46A0AEB56A8D2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -340,6 +500,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		613449A1D8661B791B29E60A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipeSearchApp-RecipeSearchAppUITests/Pods-RecipeSearchApp-RecipeSearchAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipeSearchApp-RecipeSearchAppUITests/Pods-RecipeSearchApp-RecipeSearchAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecipeSearchApp-RecipeSearchAppUITests/Pods-RecipeSearchApp-RecipeSearchAppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D9527BC3921482BBA01A55F8 /* [CP] Check Pods Manifest.lock */ = {
@@ -371,9 +548,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7B7751C2912258D0000DB67 /* RecipeSearchAPI.swift in Sources */,
+				D7B7751529120FE60000DB67 /* ProviderExtension.swift in Sources */,
+				D7B7751A291213DD0000DB67 /* NetworkError.swift in Sources */,
+				D7B7751E291226720000DB67 /* Configuration.swift in Sources */,
+				D7B77510291208B40000DB67 /* SearchEmptyView.swift in Sources */,
 				D7B774D72911FC930000DB67 /* ViewController.swift in Sources */,
 				D7B774D32911FC930000DB67 /* AppDelegate.swift in Sources */,
 				D7B774D52911FC930000DB67 /* SceneDelegate.swift in Sources */,
+				D7B775182912138A0000DB67 /* NetworkResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

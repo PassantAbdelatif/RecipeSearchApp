@@ -1,3 +1,70 @@
-PODFILE CHECKSUM: 0eada21ab782d73d6abbe929afa26ee49a8d6c67
+PODS:
+  - Alamofire (4.9.1)
+  - IQKeyboardManagerSwift (6.5.10)
+  - Moya (12.0.1):
+    - Moya/Core (= 12.0.1)
+  - Moya-ObjectMapper (2.8):
+    - Moya-ObjectMapper/Core (= 2.8)
+  - Moya-ObjectMapper/Core (2.8):
+    - Moya (~> 12.0)
+    - ObjectMapper (~> 3.4)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - ObjectMapper (3.5.3)
+  - Parchment (3.2.0)
+  - PromiseKit (6.18.1):
+    - PromiseKit/CorePromise (= 6.18.1)
+    - PromiseKit/Foundation (= 6.18.1)
+    - PromiseKit/UIKit (= 6.18.1)
+  - PromiseKit/CorePromise (6.18.1)
+  - PromiseKit/Foundation (6.18.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.18.1):
+    - PromiseKit/CorePromise
+  - Result (4.1.0)
+  - SwiftMessages (9.0.6):
+    - SwiftMessages/App (= 9.0.6)
+  - SwiftMessages/App (9.0.6)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - IQKeyboardManagerSwift
+  - Moya
+  - Moya-ObjectMapper
+  - ObjectMapper (~> 3.4)
+  - Parchment
+  - PromiseKit
+  - Result
+  - SwiftMessages
+  - SwiftyJSON (~> 5)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - Moya
+    - Moya-ObjectMapper
+    - ObjectMapper
+    - Parchment
+    - PromiseKit
+    - Result
+    - SwiftMessages
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  Moya-ObjectMapper: c514b5eafcfd5e260f85f7a5bf66895a217e2b37
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  Parchment: a43c440b22c8a60f7e0196b74339446d4d1d18ea
+  PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: 3c85e6c05041aab684f9a38867baf68484589cf4
 
 COCOAPODS: 1.11.3

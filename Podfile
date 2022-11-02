@@ -6,6 +6,16 @@ target 'RecipeSearchApp' do
   use_frameworks!
 
   # Pods for RecipeSearchApp
+  pod 'SwiftMessages’
+  pod 'IQKeyboardManagerSwift’
+  pod 'PromiseKit'
+  pod 'Alamofire'
+  pod 'Result'
+  pod 'ObjectMapper' , '~> 3.4'
+  pod 'SwiftyJSON' , '~> 5'
+  pod 'Moya'
+  pod 'Moya-ObjectMapper'
+  pod 'Parchment'
 
   target 'RecipeSearchAppTests' do
     inherit! :search_paths
