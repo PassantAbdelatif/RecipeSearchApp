@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		314CA1923D5DC385F1F6B6CC /* Pods_RecipeSearchApp_RecipeSearchAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA7BE5719CDB1445786D18E /* Pods_RecipeSearchApp_RecipeSearchAppUITests.framework */; };
 		81257ACC0CE2276EA8A0CF3F /* Pods_RecipeSearchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E6A0956D1BE2FFF02E82C8 /* Pods_RecipeSearchApp.framework */; };
+		D74705D92915916E00BF43F1 /* LoadMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74705D82915916E00BF43F1 /* LoadMore.swift */; };
 		D7B774D32911FC930000DB67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774D22911FC930000DB67 /* AppDelegate.swift */; };
 		D7B774D52911FC930000DB67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774D42911FC930000DB67 /* SceneDelegate.swift */; };
 		D7B774DC2911FC980000DB67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7B774DB2911FC980000DB67 /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		B7E6A0956D1BE2FFF02E82C8 /* Pods_RecipeSearchApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeSearchApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2E576F09AC5028BD865065 /* Pods-RecipeSearchAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeSearchAppTests.debug.xcconfig"; path = "Target Support Files/Pods-RecipeSearchAppTests/Pods-RecipeSearchAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C02BE669A35E11C7642800D1 /* Pods-RecipeSearchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeSearchApp.release.xcconfig"; path = "Target Support Files/Pods-RecipeSearchApp/Pods-RecipeSearchApp.release.xcconfig"; sourceTree = "<group>"; };
+		D74705D82915916E00BF43F1 /* LoadMore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMore.swift; sourceTree = "<group>"; };
 		D7B774CF2911FC930000DB67 /* RecipeSearchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeSearchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B774D22911FC930000DB67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7B774D42911FC930000DB67 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D74705D72915915800BF43F1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D74705D82915916E00BF43F1 /* LoadMore.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		D7B774C62911FC930000DB67 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +209,7 @@
 			children = (
 				D7B775022912065D0000DB67 /* AppDelegate */,
 				D7B77503291206980000DB67 /* Support */,
+				D74705D72915915800BF43F1 /* Utilities */,
 				D7B77507291207890000DB67 /* Network */,
 				D7B7752629133A720000DB67 /* Entity */,
 				D7B7751F291336870000DB67 /* AppModules */,
@@ -671,6 +682,7 @@
 				D7C1A0B62914EEB000626E81 /* UIImageViewExtension.swift in Sources */,
 				D7C1A08D2914AEA600626E81 /* Digest.swift in Sources */,
 				D7B7752929133E680000DB67 /* RecipeSearchProtocols.swift in Sources */,
+				D74705D92915916E00BF43F1 /* LoadMore.swift in Sources */,
 				D7C1A0B82914EF7300626E81 /* StringExtension.swift in Sources */,
 				D7C1A0AD2914E72900626E81 /* UIViewExtension.swift in Sources */,
 				D7C1A0A92914DA0400626E81 /* RecipeSearchRouter.swift in Sources */,

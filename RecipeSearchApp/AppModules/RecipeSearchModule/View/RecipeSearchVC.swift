@@ -20,6 +20,7 @@ class RecipeSearchVC: UIViewController {
     var nextUrl: String?
     var hasNext: Bool = false
     var searchString = ""
+    var activityIndicator : LoadMoreActivityIndicator?
     
     override func viewDidLoad() {
         setUpUI()
@@ -43,6 +44,10 @@ class RecipeSearchVC: UIViewController {
 extension RecipeSearchVC {
     func setUpUI() {
         self.searchView.addPrimaryShadow()
+        activityIndicator = LoadMoreActivityIndicator(scrollView: self.tableView,
+                                                      spacingFromLastCell: 10,
+                                                      spacingFromLastCellWhenLoadMoreActionStart: 60)
+
     }
     func registerCells() {
         tableView.delegate = self
@@ -86,16 +91,29 @@ extension RecipeSearchVC: UITableViewDelegate, UITableViewDataSource {
         if let recipe = self.recipeList[indexPath.row].recipe {
             cell?.configCell(recipe: recipe)
         }
-       
-        if indexPath.row == recipeList.count - 1 { // last cell
-//            self.recipeSearchPresenter?.getRecipesSearchResult(searchString: self.searchString,
-//                                                               healthFilter: self.selectedHealthFilter,
-//                                                               nextUrl: self.nextUrl)
-        }
+
         return cell!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150.0
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.hasNext {
+            activityIndicator?.start {
+                DispatchQueue.global(qos: .utility).async {
+                    sleep(1)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.recipeSearchPresenter?.getRecipesSearchResult(searchString: self?.searchString ?? "",
+                                                                            healthFilter: self?.selectedHealthFilter,
+                                                                            nextUrl: self?.nextUrl)
+                        DispatchQueue.main.async { [weak self] in
+                            self?.activityIndicator?.stop()
+                        }
+                    }
+                }
+            }
+        }
     }
 }
