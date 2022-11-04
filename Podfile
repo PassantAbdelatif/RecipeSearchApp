@@ -15,7 +15,7 @@ target 'RecipeSearchApp' do
   pod 'SwiftyJSON' , '~> 5'
   pod 'Moya'
   pod 'Moya-ObjectMapper'
-  pod 'Parchment'
+  pod "Kingfisher", :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'version6-xcode13'
 
   target 'RecipeSearchAppTests' do
     inherit! :search_paths

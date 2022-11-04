@@ -28,10 +28,10 @@ extension RecipeSearchAPI: TargetType {
     var path: String {
         switch self {
         case .getRecipeSearchResult:
-            return "/api/recipes/v2"
+            return Configuration.API_RECIPE_SEARCH_LIST
 
         case .getRecipeDetails(let id):
-            return "/api/recipes/v2/\(id)"
+            return "\(Configuration.API_RECIPE_DETAILS)\(id)"
         }
     }
 
@@ -42,7 +42,6 @@ extension RecipeSearchAPI: TargetType {
 
         case .getRecipeDetails:
             return .get
-
         }
     }
 
@@ -56,16 +55,13 @@ extension RecipeSearchAPI: TargetType {
         case .getRecipeDetails:
             return .requestPlain
 
-    
-
         }
     }
+    
     var headers: [String: String]? {
         
         var header = [String: String]()
-        
         header["content-type"] = "application/json"
-        
         return header
     }
 
