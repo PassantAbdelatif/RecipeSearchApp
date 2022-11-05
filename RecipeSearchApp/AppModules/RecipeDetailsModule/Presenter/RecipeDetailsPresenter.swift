@@ -7,6 +7,8 @@
 
 import Foundation
 class RecipeDetailsPresenter: ViewToPresenterRecipeDetailsProtocol {
+  
+    
     var recipeDetailsInteractor: PresenterToInteractorRecipeDetailsProtocol?
     
     var recipeDetailsView: PresenterToViewRecipeDetailsProtocol?
@@ -14,22 +16,28 @@ class RecipeDetailsPresenter: ViewToPresenterRecipeDetailsProtocol {
     var recipeDetails: Hits?
     
     func getRecipesDetails() {
-        self.recipeDetailsView?.startRecipeDetailsViewLoader()
-        self.recipeDetailsInteractor?.getRecipeDetails(recipe: recipeDetails)
+        recipeDetailsView?.startRecipeDetailsViewLoader()
+        recipeDetailsInteractor?.getRecipeDetails(recipe: recipeDetails)
     }
-
     
+    func shareRecipeUrl() {
+        recipeDetailsInteractor?.shareRecipeUrl(recipe: recipeDetails)
+    }
+    
+    func openRecipeWebsiteOnSafari() {
+        recipeDetailsInteractor?.openRecipeWebsiteOnSafari(recipe: recipeDetails)
+    }
 }
 
 extension RecipeDetailsPresenter: InteractorToPresenterRecipeDetailsProtocol {
     func sendRecipeDetailsToPresenter(recipeDetails: Hits) {
-        self.recipeDetailsView?.endRecipeDetailsViewLoader()
+        recipeDetailsView?.endRecipeDetailsViewLoader()
         recipeDetailsView?.sendRecipeDetailsToView(recipeDetails: recipeDetails)
     }
 
     func sendDataFailed(error: String) {
-        self.recipeDetailsView?.endRecipeDetailsViewLoader()
-        self.recipeDetailsView?.sendErrorToView(error: error)
+        recipeDetailsView?.endRecipeDetailsViewLoader()
+        recipeDetailsView?.sendErrorToView(error: error)
     }
 
 }

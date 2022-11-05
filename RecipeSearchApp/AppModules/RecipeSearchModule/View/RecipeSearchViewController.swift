@@ -76,7 +76,7 @@ extension RecipeSearchViewController {
 // MARK: SetUpUI & Register Cells
 extension RecipeSearchViewController {
     func setUpUI() {
-        self.title = "Recipes Search"
+        self.title = Constants.ScreenTitles.recipeSearchScreen
         recipeSeaarchSuggestedKeyWordsTableView.addPrimaryShadow()
         self.searchView.addPrimaryShadow()
         spinner = UIActivityIndicatorView(style: .medium)

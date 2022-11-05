@@ -702,10 +702,10 @@
             filePath = "RecipeSearchApp/AppModules/RecipeDetailsModule/View/RecipeDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "RecipeDetailsViewController"
-            landmarkType = "21">
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "endRecipeDetailsViewLoader()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -718,9 +718,9 @@
             filePath = "RecipeSearchApp/AppModules/RecipeDetailsModule/View/RecipeDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "sendRecipeDetailsToView(recipeDetails:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "endRecipeDetailsViewLoader()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -734,10 +734,10 @@
             filePath = "RecipeSearchApp/AppModules/RecipeDetailsModule/View/RecipeDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "sendRecipeDetailsToView(recipeDetails:)"
-            landmarkType = "7">
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "RecipeDetailsViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -750,10 +750,10 @@
             filePath = "RecipeSearchApp/AppModules/RecipeDetailsModule/Presenter/RecipeDetailsPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "getRecipesDetails()"
-            landmarkType = "7">
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "RecipeDetailsPresenter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -766,10 +766,10 @@
             filePath = "RecipeSearchApp/AppModules/RecipeDetailsModule/Presenter/RecipeDetailsPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "getRecipesDetails()"
-            landmarkType = "7">
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "RecipeDetailsPresenter"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -782,10 +782,10 @@
             filePath = "RecipeSearchApp/AppModules/RecipeDetailsModule/Presenter/RecipeDetailsPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "getRecipesDetails()"
-            landmarkType = "7">
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "recipeDetailsInteractor"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

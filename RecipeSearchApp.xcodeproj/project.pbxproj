@@ -60,6 +60,8 @@
 		D7C3EFBC2916FE4E000027C7 /* RecipeDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3EFBB2916FE4E000027C7 /* RecipeDetailsPresenter.swift */; };
 		D7C3EFBE2916FE60000027C7 /* RecipeDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3EFBD2916FE60000027C7 /* RecipeDetailsRouter.swift */; };
 		D7C3EFC02916FF36000027C7 /* RecipeDetailsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3EFBF2916FF36000027C7 /* RecipeDetailsProtocols.swift */; };
+		D7C3EFC229171B9C000027C7 /* UIApplication+ShareExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3EFC129171B9B000027C7 /* UIApplication+ShareExtension.swift */; };
+		D7C3EFC529171EEB000027C7 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3EFC429171EEB000027C7 /* AppConstants.swift */; };
 		D9C524C2C5EF2C4D82F0B7E3 /* Pods_RecipeSearchAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135717CBB3C08239DF425D64 /* Pods_RecipeSearchAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,8 @@
 		D7C3EFBB2916FE4E000027C7 /* RecipeDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsPresenter.swift; sourceTree = "<group>"; };
 		D7C3EFBD2916FE60000027C7 /* RecipeDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsRouter.swift; sourceTree = "<group>"; };
 		D7C3EFBF2916FF36000027C7 /* RecipeDetailsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsProtocols.swift; sourceTree = "<group>"; };
+		D7C3EFC129171B9B000027C7 /* UIApplication+ShareExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ShareExtension.swift"; sourceTree = "<group>"; };
+		D7C3EFC429171EEB000027C7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +284,7 @@
 		D7B77503291206980000DB67 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				D7C3EFC329171E41000027C7 /* AppConstants */,
 				D7B775062912072E0000DB67 /* Configuration */,
 				D7B77505291206B60000DB67 /* Resources */,
 				D7B77504291206A50000DB67 /* Extensions */,
@@ -463,6 +468,7 @@
 				D74705DA2915D2AF00BF43F1 /* UICollectionView+Register.swift */,
 				D74705DC2915D30E00BF43F1 /* UITableView+Register.swift */,
 				D74705E12915E6D300BF43F1 /* UIScrollView+SwiftPullToRefersh.swift */,
+				D7C3EFC129171B9B000027C7 /* UIApplication+ShareExtension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -523,6 +529,14 @@
 				D7C3EFBD2916FE60000027C7 /* RecipeDetailsRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		D7C3EFC329171E41000027C7 /* AppConstants */ = {
+			isa = PBXGroup;
+			children = (
+				D7C3EFC429171EEB000027C7 /* AppConstants.swift */,
+			);
+			path = AppConstants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -772,6 +786,7 @@
 				D7B7751C2912258D0000DB67 /* RecipeSearchAPI.swift in Sources */,
 				D7C1A0922914AEA600626E81 /* NutrientDetails.swift in Sources */,
 				D7C1A0B32914E98000626E81 /* RecipeTableViewCell.swift in Sources */,
+				D7C3EFC229171B9C000027C7 /* UIApplication+ShareExtension.swift in Sources */,
 				D7C1A0A32914C76700626E81 /* RecipeSearchViewController.swift in Sources */,
 				D7C1A0B62914EEB000626E81 /* UIImageViewExtension.swift in Sources */,
 				D7C1A08D2914AEA600626E81 /* Digest.swift in Sources */,
@@ -789,6 +804,7 @@
 				D7B7751529120FE60000DB67 /* ProviderExtension.swift in Sources */,
 				D7B7751A291213DD0000DB67 /* NetworkError.swift in Sources */,
 				D7B7751E291226720000DB67 /* Configuration.swift in Sources */,
+				D7C3EFC529171EEB000027C7 /* AppConstants.swift in Sources */,
 				D74705DB2915D2AF00BF43F1 /* UICollectionView+Register.swift in Sources */,
 				D7C1A0B02914E80500626E81 /* UITableViewExtension.swift in Sources */,
 				D7C1A08A2914AEA600626E81 /* Next.swift in Sources */,

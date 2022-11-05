@@ -13,11 +13,15 @@ protocol ViewToPresenterRecipeDetailsProtocol {
     
     var recipeDetails: Hits? {get set}
     func getRecipesDetails()
+    func shareRecipeUrl()
+    func openRecipeWebsiteOnSafari()
 }
 
 protocol PresenterToInteractorRecipeDetailsProtocol {
     var presenter: InteractorToPresenterRecipeDetailsProtocol? {get set}
     func getRecipeDetails(recipe: Hits?)
+    func shareRecipeUrl(recipe: Hits?)
+    func openRecipeWebsiteOnSafari(recipe: Hits?)
 }
 
 protocol InteractorToPresenterRecipeDetailsProtocol {

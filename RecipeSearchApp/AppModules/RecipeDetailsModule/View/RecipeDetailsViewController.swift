@@ -25,14 +25,23 @@ class RecipeDetailsViewController: BaseViewController {
         setUpUI()
     }
     @IBAction func goToRecipeWebSiteAction(_ sender: Any) {
-        
+        recipeDetailsPresenter?.openRecipeWebsiteOnSafari()
     }
 }
 
 extension RecipeDetailsViewController {
     func setUpUI() {
-        self.title = "Recipes Details"
+        self.title = Constants.ScreenTitles.recipeDetailsScreen
         loaderIndicator?.hidesWhenStopped = true
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action,
+                                          target: self,
+                                          action: #selector(shareButtonPressed))
+        
+        self.navigationItem.rightBarButtonItem = shareButton
+    }
+    @objc func shareButtonPressed() {
+        recipeDetailsPresenter?.shareRecipeUrl()
+       
     }
     func setUpData() {
         guard let recipe = recipeDetails?.recipe else {

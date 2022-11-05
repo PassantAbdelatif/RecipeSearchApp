@@ -5,9 +5,9 @@
 //  Created by Passant Abdelatif on 05/11/2022.
 //
 
-import Foundation
+import UIKit
 class RecipeDetailsInteractor: PresenterToInteractorRecipeDetailsProtocol {
- 
+  
     var presenter: InteractorToPresenterRecipeDetailsProtocol?
     
     func getRecipeDetails(recipe: Hits?) {
@@ -35,5 +35,17 @@ class RecipeDetailsInteractor: PresenterToInteractorRecipeDetailsProtocol {
         }
     }
     
+    func shareRecipeUrl(recipe: Hits?) {
+        if let recipeUrl = recipe?.recipe?.url {
+            let data = [ recipeUrl] as [Any]
+            UIApplication.share(data)
+        }
+    }
+    
+    func openRecipeWebsiteOnSafari(recipe: Hits?) {
+        if let recipeUrl = recipe?.recipe?.url {
+            UIApplication.shared.openURLWithSafariBrowser(recipeUrl)
+        }
+    }
 }
 

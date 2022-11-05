@@ -15,4 +15,10 @@ extension String {
         }
         return self
     }
+    
+    var isSearchStringContainsEnglishCharactersAndSpaces: Bool {
+        let predicate = NSPredicate(format: "SELF MATCHES %@", ".*[^A-Za-z ].*")
+        return predicate.evaluate(with: self)
+    }
+   
 }
