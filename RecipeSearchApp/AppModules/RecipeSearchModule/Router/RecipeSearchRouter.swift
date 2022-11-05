@@ -5,18 +5,26 @@
 //  Created by Passant Abdelatif on 04/11/2022.
 //
 
-import Foundation
+import UIKit
 
 class RecipeSearchRouter: PresenterToRouterRecipesProtocol {
-    static func createModule(ref: RecipeSearchViewController) {
+ 
+    static func createModule(recipeSearchViewController: RecipeSearchViewController) {
         let presenter = RecipeSearchPresenter()
         
-        ref.recipeSearchPresenter = presenter
+        recipeSearchViewController.recipeSearchPresenter = presenter
         
-        ref.recipeSearchPresenter?.recipesSearchInteractor = RecipeSearchInteractor()
-        ref.recipeSearchPresenter?.recipesSearchView = ref 
+        recipeSearchViewController.recipeSearchPresenter?.recipesSearchInteractor = RecipeSearchInteractor()
+        recipeSearchViewController.recipeSearchPresenter?.recipesSearchView = recipeSearchViewController 
         
-        ref.recipeSearchPresenter?.recipesSearchInteractor?.presenter = presenter
+        recipeSearchViewController.recipeSearchPresenter?.recipesSearchInteractor?.presenter = presenter
     }
     
+    static func pushToRecipeDetialsScreen(recipe: Hits,
+                                          navigationConroller navigationController: UINavigationController) {
+        let recipeDetailsModuel = RecipeDetailsRouter.createModule(recipeDetailsViewController: RecipeDetailsViewController())
+        recipeDetailsModuel.recipeDetailsPresenter?.recipeDetails = recipe
+        navigationController.pushViewController(recipeDetailsModuel,
+                                                animated: true)
+    }
 }

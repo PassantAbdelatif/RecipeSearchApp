@@ -2,9 +2,9 @@
 //  NewEmptyFavoriteView.swift
 //  BeutiCustomer
 //
-//  Created by Mohamad Basuony on 24/08/2022.
-//  Copyright © 2022 Michelle. All rights reserved.
+//  Created by Passant Abdelatif on 05/11/2022.
 //
+
 
 import UIKit
 

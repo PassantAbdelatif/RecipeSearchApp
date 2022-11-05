@@ -13,11 +13,6 @@ extension String {
         if self.isEmpty {
             return nil
         }
-        
-        if !self.contains("http") {
-            return baseUrl + self
-        }
-        
-        return self.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)
+        return self
     }
 }

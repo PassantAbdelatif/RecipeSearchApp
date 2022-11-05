@@ -5,7 +5,7 @@
 //  Created by Passant Abdelatif on 03/11/2022.
 //
 
-import Foundation
+import UIKit
 
 protocol ViewToPresenterRecipesProtocol {
     var recipesSearchInteractor: PresenterToInteractorRecipesProtocol? {get set}
@@ -49,5 +49,7 @@ protocol PresenterToViewRecipesProtocol {
 }
 
 protocol PresenterToRouterRecipesProtocol {
-    static func createModule(ref: RecipeSearchViewController)
+    static func createModule(recipeSearchViewController: RecipeSearchViewController)
+    static func pushToRecipeDetialsScreen(recipe: Hits,
+                                          navigationConroller navigationController: UINavigationController)
 }

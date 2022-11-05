@@ -38,7 +38,7 @@ class Recipe: Codable {
   var mealType: [String]?
   var totalNutrients: TotalNutrients?
   var yield: Int?
-  var totalTime: Int?
+  var totalTime: Double?
   var totalWeight: Float?
   var cuisineType: [String]?
   var dietLabels: [String]?

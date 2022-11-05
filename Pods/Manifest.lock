@@ -1,27 +1,8 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.6.2)
   - IQKeyboardManagerSwift (6.5.10)
   - Kingfisher (6.3.1)
-  - Moya (12.0.1):
-    - Moya/Core (= 12.0.1)
-  - Moya-ObjectMapper (2.8):
-    - Moya-ObjectMapper/Core (= 2.8)
-  - Moya-ObjectMapper/Core (2.8):
-    - Moya (~> 12.0)
-    - ObjectMapper (~> 3.4)
-  - Moya/Core (12.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.0)
   - ObjectMapper (3.5.3)
-  - PromiseKit (6.18.1):
-    - PromiseKit/CorePromise (= 6.18.1)
-    - PromiseKit/Foundation (= 6.18.1)
-    - PromiseKit/UIKit (= 6.18.1)
-  - PromiseKit/CorePromise (6.18.1)
-  - PromiseKit/Foundation (6.18.1):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.18.1):
-    - PromiseKit/CorePromise
   - Result (4.1.0)
   - SwiftMessages (9.0.6):
     - SwiftMessages/App (= 9.0.6)
@@ -30,13 +11,10 @@ PODS:
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 5.0)
   - IQKeyboardManagerSwift
   - Kingfisher (from `https://github.com/onevcat/Kingfisher.git`, branch `version6-xcode13`)
-  - Moya
-  - Moya-ObjectMapper
   - ObjectMapper (~> 3.4)
-  - PromiseKit
   - Result
   - SwiftMessages
   - SwiftPullToRefresh
@@ -46,10 +24,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - IQKeyboardManagerSwift
-    - Moya
-    - Moya-ObjectMapper
     - ObjectMapper
-    - PromiseKit
     - Result
     - SwiftMessages
     - SwiftPullToRefresh
@@ -66,18 +41,15 @@ CHECKOUT OPTIONS:
     :git: https://github.com/onevcat/Kingfisher.git
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   Kingfisher: 8b783c3d7be73a99b2172a743a5bc0a4dd331d79
-  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  Moya-ObjectMapper: c514b5eafcfd5e260f85f7a5bf66895a217e2b37
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
-  PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
   SwiftPullToRefresh: f61d67439c5b8d66420fe57193cab8c279398e7a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 38df9812856077ca08d39d1e0b49960c83a2a2e0
+PODFILE CHECKSUM: a5a1530bbc9de8b4a1c5af5a6f77bfa59b3534eb
 
 COCOAPODS: 1.11.3

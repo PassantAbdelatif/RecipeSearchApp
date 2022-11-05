@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import PromiseKit
 
 struct NetworkResponse<T: Codable>: Codable {
 

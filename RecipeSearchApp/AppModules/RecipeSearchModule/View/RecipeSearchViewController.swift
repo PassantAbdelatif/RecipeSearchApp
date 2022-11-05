@@ -11,10 +11,10 @@ import SwiftUI
 class RecipeSearchViewController: BaseViewController {
     // MARK: Outlets
     @IBOutlet weak var searchView: UIView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var recipeSearchListTableView: UITableView!
+    @IBOutlet weak var recipeHealthLabelCollectionView: UICollectionView!
     @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var autocompleteTableView: UITableView!
+    @IBOutlet weak var recipeSeaarchSuggestedKeyWordsTableView: UITableView!
     
     // MARK: Properties
     var recipeList = [Hits]()
@@ -31,7 +31,7 @@ class RecipeSearchViewController: BaseViewController {
         setUpUI()
         registerCells()
         
-        RecipeSearchRouter.createModule(ref: self)
+        RecipeSearchRouter.createModule(recipeSearchViewController: self)
         
         self.searchTextField.addTarget(self,
                                        action: #selector(textDidChange(sender:)),
@@ -42,7 +42,8 @@ class RecipeSearchViewController: BaseViewController {
 // MARK: Actions
 extension RecipeSearchViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
-        self.autocompleteTableView.isHidden = true
+        self.recipeSeaarchSuggestedKeyWordsTableView.isHidden = true
+        self.recipeHealthLabelCollectionView.isHidden = true
         recipeSearchPresenter?.searchString = self.searchTextField.text ?? ""
         self.recipeSearchPresenter?.saveSearchString()
         self.updateListStatus = .refresh
@@ -58,17 +59,16 @@ extension RecipeSearchViewController {
                !searchText.isEmpty {
                 self.searchAutocompleteEntriesWithSubstring(substring: searchText)
             } else {
-                autocompleteTableView.isHidden = true
+                recipeSeaarchSuggestedKeyWordsTableView.isHidden = true
             }
-            
         }
     }
     
     
     func searchAutocompleteEntriesWithSubstring(substring: String) {
   
-        autocompleteTableView.isHidden = false
-        autocompleteTableView.reloadData()
+        recipeSeaarchSuggestedKeyWordsTableView.isHidden = false
+        recipeSeaarchSuggestedKeyWordsTableView.reloadData()
     }
 
 }
@@ -76,26 +76,26 @@ extension RecipeSearchViewController {
 // MARK: SetUpUI & Register Cells
 extension RecipeSearchViewController {
     func setUpUI() {
-        
-        autocompleteTableView.addPrimaryShadow()
+        self.title = "Recipes Search"
+        recipeSeaarchSuggestedKeyWordsTableView.addPrimaryShadow()
         self.searchView.addPrimaryShadow()
         spinner = UIActivityIndicatorView(style: .medium)
         spinner?.hidesWhenStopped = true
         
-        self.tableView.setupLoadingMore {
+        self.recipeSearchListTableView.setupLoadingMore {
             self.updateListStatus = .loadMore
             if let hasNext = self.recipeSearchPresenter?.hasNext,
                hasNext {
                 self.recipeSearchPresenter?.getRecipesSearchResult(updateListStatus: .loadMore)
             } else {
                 DispatchQueue.main.async() {
-                    self.tableView.endLoadingMoreAndRefreshing()
+                    self.recipeSearchListTableView.endLoadingMoreAndRefreshing()
                 }
             }
             
         }
         
-        self.tableView.setupRefresh {
+        self.recipeSearchListTableView.setupRefresh {
             self.updateListStatus = .refresh
             self.recipeSearchPresenter?.getRecipesSearchResult(updateListStatus: .refresh)
         }
@@ -104,26 +104,26 @@ extension RecipeSearchViewController {
     }
     
     func registerCells() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        recipeSearchListTableView.delegate = self
+        recipeSearchListTableView.dataSource = self
         //RecipeTableViewCell
-        tableView.registerNibFor(cellClass: RecipeTableViewCell.self)
+        recipeSearchListTableView.registerNibFor(cellClass: RecipeTableViewCell.self)
         // Set automatic dimensions for row height
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
+        recipeSearchListTableView.rowHeight = UITableView.automaticDimension
+        recipeSearchListTableView.estimatedRowHeight = UITableView.automaticDimension
         
         self.searchTextField.delegate = self
 
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.registerNibFor(cellClass: HealthLabelCollectionViewCell.self)
+        recipeHealthLabelCollectionView.delegate = self
+        recipeHealthLabelCollectionView.dataSource = self
+        recipeHealthLabelCollectionView.registerNibFor(cellClass: HealthLabelCollectionViewCell.self)
         
-        autocompleteTableView.delegate = self
-        autocompleteTableView.dataSource = self
-        autocompleteTableView.isScrollEnabled = true
-        autocompleteTableView.isHidden = true
+        recipeSeaarchSuggestedKeyWordsTableView.delegate = self
+        recipeSeaarchSuggestedKeyWordsTableView.dataSource = self
+        recipeSeaarchSuggestedKeyWordsTableView.isScrollEnabled = true
+        recipeSeaarchSuggestedKeyWordsTableView.isHidden = true
         
-        autocompleteTableView.registerClassFor(cellClass: UITableViewCell.self)
+        recipeSeaarchSuggestedKeyWordsTableView.registerClassFor(cellClass: UITableViewCell.self)
     }
 }
 // MARK: GetData
@@ -138,71 +138,86 @@ extension RecipeSearchViewController: PresenterToViewRecipesProtocol {
         if let selectedHealthFilter = self.recipeSearchPresenter?.selectedHealthFilter {
 
             if let selectedHealthFilterIndex = self.healthLabelsList.firstIndex(where: {$0 == selectedHealthFilter}) {
-                collectionView.selectItem(at: IndexPath(item: selectedHealthFilterIndex, section: 0),
+                recipeHealthLabelCollectionView.selectItem(at: IndexPath(item: selectedHealthFilterIndex, section: 0),
                                           animated: true,
                                           scrollPosition: .top )
             }
         } else {
-            self.healthLabelsList.removeAll()
-            self.healthLabelsList.append(contentsOf: healthLabels)
-            self.collectionView.reloadData()
-            // select ALL
-            collectionView.selectItem(at: IndexPath(item: 0, section: 0),
-                                      animated: true,
-                                      scrollPosition: .top )
+            if recipeList.count > 0 {
+                self.recipeHealthLabelCollectionView.isHidden = false
+                self.healthLabelsList.removeAll()
+                self.healthLabelsList.append(contentsOf: healthLabels)
+                self.recipeHealthLabelCollectionView.reloadData()
+                // select ALL
+                recipeHealthLabelCollectionView.selectItem(at: IndexPath(item: 0, section: 0),
+                                          animated: true,
+                                          scrollPosition: .top )
+            } else {
+                self.recipeHealthLabelCollectionView.isHidden = true
+            }
+           
         }
         
     }
     
     func startViewLoader() {
         spinner?.startAnimating()
-        tableView.backgroundView = spinner
+        recipeSearchListTableView.backgroundView = spinner
     }
     
     func endViewLoader() {
-        spinner?.startAnimating()
-        tableView.backgroundView = nil
+        spinner?.stopAnimating()
+        spinner?.hidesWhenStopped = true
+        recipeSearchListTableView.backgroundView = nil
+       
     }
     
     func sendErrorToView(error: String) {
-        
+        spinner?.stopAnimating()
+        spinner?.hidesWhenStopped = true
+        recipeSearchListTableView.backgroundView = nil
+        recipeSearchListTableView.endLoadingMoreAndRefreshing()
+        let alert = UIAlertController(title: "Error",
+                                      message: error,
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: UIAlertAction.Style.default,
+                                      handler: nil))
+        self.present(alert,
+                     animated: true,
+                     completion: nil)
     }
     
     func sendDataToView(recipeList: [Hits]) {
-    
+        
         switch self.updateListStatus {
         case .refresh:
-           
+            
             self.recipeList.removeAll()
             self.recipeList = recipeList
-            if self.recipeList.count > 0 {
-                self.recipeSearchPresenter?.getRecipeHealthCategories()
-            }
+            recipeSearchPresenter?.getRecipeHealthCategories()
+            
         case .loadMore:
             self.recipeList.append(contentsOf: recipeList)
         }
-
-        DispatchQueue.main.async() {
-            self.tableView.reloadData(isEmpty:  self.recipeList.isEmpty,
-                                      noDataView: self.emptyView)
-            self.tableView.endLoadingMoreAndRefreshing()
-        }
-       
+        
+        recipeSearchListTableView.reloadData(isEmpty:  self.recipeList.isEmpty,
+                                             noDataView: self.emptyView)
+        recipeSearchListTableView.endLoadingMoreAndRefreshing()
     }
-
 }
 
 // MARK: UITableViewDataSource
 extension RecipeSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.tableView {
+        if tableView == self.recipeSearchListTableView {
             return self.recipeList.count
         } else {
             return self.suggestedSearchKeys.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == self.tableView {
+        if tableView == self.recipeSearchListTableView {
         let cell = tableView.dequeueReusableCell(cellClass: RecipeTableViewCell.self)
         if recipeList.count > 0 {
             if let recipe = self.recipeList[indexPath.row].recipe {
@@ -221,11 +236,12 @@ extension RecipeSearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.tableView {
-            //go to details
+        if tableView == self.recipeSearchListTableView {
+            RecipeSearchRouter.pushToRecipeDetialsScreen(recipe: self.recipeList[indexPath.row],
+                                                         navigationConroller: self.navigationController!)
         } else {
             searchTextField.text = self.suggestedSearchKeys[indexPath.row]
-            self.autocompleteTableView.isHidden = true
+            self.recipeSeaarchSuggestedKeyWordsTableView.isHidden = true
         }
     }
     
@@ -252,7 +268,13 @@ extension RecipeSearchViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedFilter = self.healthLabelsList[indexPath.row]
-        self.recipeSearchPresenter?.selectedHealthFilter = selectedFilter
+        self.updateListStatus = .refresh
+        if indexPath.row == 0 {
+            self.recipeSearchPresenter?.selectedHealthFilter = nil
+        } else {
+            self.recipeSearchPresenter?.selectedHealthFilter = selectedFilter
+        }
+        
         self.recipeSearchPresenter?.getRecipesSearchResult(updateListStatus: .refresh)
     }
 }

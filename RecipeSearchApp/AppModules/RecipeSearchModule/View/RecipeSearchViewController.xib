@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecipeSearchViewController" customModule="RecipeSearchApp" customModuleProvider="target">
             <connections>
-                <outlet property="autocompleteTableView" destination="zJL-hW-cdu" id="SO2-Da-JCT"/>
-                <outlet property="collectionView" destination="pSm-in-cs9" id="URk-qK-vgn"/>
+                <outlet property="recipeHealthLabelCollectionView" destination="pSm-in-cs9" id="URk-qK-vgn"/>
+                <outlet property="recipeSeaarchSuggestedKeyWordsTableView" destination="zJL-hW-cdu" id="SO2-Da-JCT"/>
+                <outlet property="recipeSearchListTableView" destination="Cch-y9-PdJ" id="IFO-4X-KDw"/>
                 <outlet property="searchTextField" destination="nx9-tF-9KE" id="Wzu-Au-K7p"/>
                 <outlet property="searchView" destination="bSc-BY-aTN" id="aDn-ea-V3S"/>
-                <outlet property="tableView" destination="Cch-y9-PdJ" id="IFO-4X-KDw"/>
                 <outlet property="view" destination="iN0-l3-epB" id="KqE-lW-wcO"/>
             </connections>
         </placeholder>

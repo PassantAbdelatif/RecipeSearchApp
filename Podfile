@@ -8,13 +8,11 @@ target 'RecipeSearchApp' do
   # Pods for RecipeSearchApp
   pod 'SwiftMessages’
   pod 'IQKeyboardManagerSwift’
-  pod 'PromiseKit'
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 5.0'
   pod 'Result'
   pod 'ObjectMapper' , '~> 3.4'
   pod 'SwiftyJSON' , '~> 5'
-  pod 'Moya'
-  pod 'Moya-ObjectMapper'
+  
   pod "Kingfisher", :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'version6-xcode13'
   pod 'SwiftPullToRefresh'
 

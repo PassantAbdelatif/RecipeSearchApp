@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 class RecipeSearchInteractor: PresenterToInteractorRecipesProtocol {
 
     var presenter: InteractorToPresenterRecipesProtocol?
@@ -16,10 +15,10 @@ class RecipeSearchInteractor: PresenterToInteractorRecipesProtocol {
                                 healthFilter: String?,
                                 nextUrl: String?) {
         
-        var  params: Parameters = ["q": searchString,
-                                   "app_key": Configuration.appKey,
-                                   "app_id" : Configuration.appId,
-                                   "type"   : "public"]
+        var  params : [String : Any] = ["q": searchString,
+                                        "app_key": Configuration.appKey,
+                                        "app_id" : Configuration.appId,
+                                        "type"   : "public"]
         if let healthFilter = healthFilter {
              params["health"] = healthFilter
         }
@@ -27,33 +26,31 @@ class RecipeSearchInteractor: PresenterToInteractorRecipesProtocol {
         if let nextUrl = nextUrl {
             requestUrl = nextUrl
         }
-        Alamofire.request(requestUrl,
-                          method: .get,
-                          parameters: params,
-                          encoding: URLEncoding.queryString).response { response in
-            if let data = response.data {
-                do {
-                    let result = try JSONDecoder().decode(RecipeSearchResponse.self,
-                                                          from: data)
-                    var hasNextPage = false
-                    if let count = result.count,
-                       let toValue = result.to {
-                        if toValue < count {
-                            hasNextPage = true
-                         
-                        }
+        
+        NetworkCall(data: params,
+                    url: requestUrl,
+                    service: nil,
+                    method: .get,
+                    isJSONRequest: false).executeQuery(){
+            (result: Result<RecipeSearchResponse,Error>) in
+            switch result{
+            case .success(let result):
+                var hasNextPage = false
+                if let count = result.count,
+                   let toValue = result.to {
+                    if toValue < count {
+                        hasNextPage = true
                     }
-                    
-                    if let list = result.hits {
-                        
-                        self.presenter?.sendDataToPresenter(recipeList: list,
-                                                            hasNextPage: hasNextPage,
-                                                            nextUrl: result.links?.next?.href)
-                        
-                    }
-                } catch {
-                    self.presenter?.sendDataFailed(error: error.localizedDescription)
                 }
+                if let list = result.hits {
+                    
+                    self.presenter?.sendDataToPresenter(recipeList: list,
+                                                        hasNextPage: hasNextPage,
+                                                        nextUrl: result.links?.next?.href)
+                    
+                }
+            case .failure(let error):
+                self.presenter?.sendDataFailed(error: error.localizedDescription)
             }
         }
     }
@@ -114,7 +111,5 @@ class RecipeSearchInteractor: PresenterToInteractorRecipesProtocol {
         let searchStrings: [String] = userDefaults.object(forKey: UserDefaultsKeys.searchKeys.rawValue) as? [String] ?? []
         self.presenter?.sendSavedSearchStringsToPresenter(savedSearchStrings: searchStrings)
     }
-    
-    
 }
 

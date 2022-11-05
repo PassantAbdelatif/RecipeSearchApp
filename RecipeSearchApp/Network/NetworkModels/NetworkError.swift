@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Moya
 
 enum `Type`:String, Codable {
     case business
@@ -22,31 +21,6 @@ struct NetworkError: Codable, Error, LocalizedError {
     var type: Type?
     
     init () {}
-    
-    init(error: MoyaError) {
-        self.message = error.errorDescription
-        
-        switch error {
-        case .underlying(let error, _):
-            
-            let nError = error as NSError
-            if (999...1017) ~= abs(nError.code ) {
-                
-                self.type = .network
-                self.message = "no Internet"
-                print(error)
-                
-            } else {
-                self.type = .system
-                print(error)
-                if let networkError = error as? NetworkError {
-                    self = networkError
-                }
-            }
-        default :
-            self.type = .mapping
-        }
-    }
     
     var errorDescription: String? {
         return self.message
