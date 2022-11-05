@@ -8,7 +8,7 @@
 import Foundation
 
 class RecipeSearchRouter: PresenterToRouterRecipesProtocol {
-    static func createModule(ref: RecipeSearchVC) {
+    static func createModule(ref: RecipeSearchViewController) {
         let presenter = RecipeSearchPresenter()
         
         ref.recipeSearchPresenter = presenter

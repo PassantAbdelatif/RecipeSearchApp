@@ -26,6 +26,7 @@ PODS:
   - SwiftMessages (9.0.6):
     - SwiftMessages/App (= 9.0.6)
   - SwiftMessages/App (9.0.6)
+  - SwiftPullToRefresh (3.1.1)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - PromiseKit
   - Result
   - SwiftMessages
+  - SwiftPullToRefresh
   - SwiftyJSON (~> 5)
 
 SPEC REPOS:
@@ -50,6 +52,7 @@ SPEC REPOS:
     - PromiseKit
     - Result
     - SwiftMessages
+    - SwiftPullToRefresh
     - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -72,8 +75,9 @@ SPEC CHECKSUMS:
   PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
+  SwiftPullToRefresh: f61d67439c5b8d66420fe57193cab8c279398e7a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: d2a34c076c475b7a2ae03ce291837a006b9cbef4
+PODFILE CHECKSUM: 38df9812856077ca08d39d1e0b49960c83a2a2e0
 
 COCOAPODS: 1.11.3

@@ -11,11 +11,24 @@ class HealthLabelCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var healthLabel: UILabel!
     @IBOutlet weak var mainContentView: UIView!
+    override var isSelected: Bool {
+        didSet{
+            if self.isSelected {
+                UIView.animate(withDuration: 0.3) { // for animation effect
+                    self.mainContentView.backgroundColor = UIColor.systemMint
+                    self.healthLabel.textColor = UIColor.white
+                }
+            }
+            else {
+                UIView.animate(withDuration: 0.3) { // for animation effect
+                    self.mainContentView.backgroundColor = UIColor.systemGray3
+                    self.healthLabel.textColor = UIColor.secondaryLabel
+                }
+            }
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.shadowDecorate()
-        self.mainContentView.layer.borderColor = UIColor.gray.cgColor
-        self.mainContentView.layer.borderWidth = 1
     }
 
     func configCell(health: String) {

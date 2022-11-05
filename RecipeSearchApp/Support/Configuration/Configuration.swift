@@ -17,3 +17,7 @@ public enum Configuration {
     static let API_RECIPE_SEARCH_LIST = "/api/recipes/v2"
     static let API_RECIPE_DETAILS = "/api/recipes/v2/"
 }
+
+enum UserDefaultsKeys: String {
+    case searchKeys = "searchKeys"
+}

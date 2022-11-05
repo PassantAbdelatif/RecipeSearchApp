@@ -16,6 +16,7 @@ target 'RecipeSearchApp' do
   pod 'Moya'
   pod 'Moya-ObjectMapper'
   pod "Kingfisher", :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'version6-xcode13'
+  pod 'SwiftPullToRefresh'
 
   target 'RecipeSearchAppTests' do
     inherit! :search_paths
