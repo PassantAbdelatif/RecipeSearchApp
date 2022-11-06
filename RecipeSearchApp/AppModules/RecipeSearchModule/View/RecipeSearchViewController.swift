@@ -85,7 +85,11 @@ extension RecipeSearchViewController {
         self.title = Constants.ScreenTitles.recipeSearchScreen
         recipeSeaarchSuggestedKeyWordsTableView.addPrimaryShadow()
         self.searchView.addPrimaryShadow()
-        spinner = UIActivityIndicatorView(style: .medium)
+        if #available(iOS 13.0, *) {
+            spinner = UIActivityIndicatorView(style: .medium)
+        } else {
+            // Fallback on earlier versions
+        }
         spinner?.hidesWhenStopped = true
         
         self.recipeSearchListTableView.setupLoadingMore {
@@ -217,12 +221,10 @@ extension RecipeSearchViewController: PresenterToViewRecipesProtocol {
 // MARK: UITableViewDataSource
 extension RecipeSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch tableViewDataSource {
-        case .suggestions:
-            return self.suggestedSearchKeys.count
-        case .searchResult:
+        if tableView == self.recipeSearchListTableView {
             return self.recipeList.count
-            
+        } else {
+            return self.suggestedSearchKeys.count
         }
     }
     func tableView(_ tableView: UITableView,
@@ -243,18 +245,16 @@ extension RecipeSearchViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            switch tableViewDataSource {
-            case .suggestions:
+            if tableView == self.recipeSeaarchSuggestedKeyWordsTableView {
                 searchTextField.text = self.suggestedSearchKeys[indexPath.row]
                 self.recipeSeaarchSuggestedKeyWordsTableView.isHidden = true
-            case .searchResult:
+            } else if tableView == self.recipeSearchListTableView {
+            
                 RecipeSearchRouter.pushToRecipeDetialsScreen(recipe: self.recipeList[indexPath.row],
                                                              navigationConroller: self.navigationController!)
             }
         }
-    }
     
 }
 // MARK: UITableViewDelegate
