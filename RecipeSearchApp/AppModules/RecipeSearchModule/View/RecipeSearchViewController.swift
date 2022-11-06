@@ -16,7 +16,13 @@ class RecipeSearchViewController: BaseViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var recipeSeaarchSuggestedKeyWordsTableView: UITableView!
     
+    enum TableViewDataSource {
+        case searchResult
+        case suggestions
+    }
+    
     // MARK: Properties
+    var tableViewDataSource = TableViewDataSource.searchResult
     var recipeList = [Hits]()
     var healthLabelsList = [String]()
     var suggestedSearchKeys = [String]()
@@ -66,7 +72,7 @@ extension RecipeSearchViewController {
     
     
     func searchAutocompleteEntriesWithSubstring(substring: String) {
-  
+        tableViewDataSource = .suggestions
         recipeSeaarchSuggestedKeyWordsTableView.isHidden = false
         recipeSeaarchSuggestedKeyWordsTableView.reloadData()
     }
@@ -173,6 +179,10 @@ extension RecipeSearchViewController: PresenterToViewRecipesProtocol {
         spinner?.stopAnimating()
         spinner?.hidesWhenStopped = true
         recipeSearchListTableView.backgroundView = nil
+        if self.updateListStatus == .refresh {
+            self.recipeList.removeAll()
+            self.recipeSearchListTableView.reloadData()
+        }
         recipeSearchListTableView.endLoadingMoreAndRefreshing()
         let alert = UIAlertController(title: "Error",
                                       message: error,
@@ -197,7 +207,7 @@ extension RecipeSearchViewController: PresenterToViewRecipesProtocol {
         case .loadMore:
             self.recipeList.append(contentsOf: recipeList)
         }
-        
+        tableViewDataSource = .searchResult
         recipeSearchListTableView.reloadData(isEmpty:  self.recipeList.isEmpty,
                                              noDataView: self.emptyView)
         recipeSearchListTableView.endLoadingMoreAndRefreshing()
@@ -207,38 +217,42 @@ extension RecipeSearchViewController: PresenterToViewRecipesProtocol {
 // MARK: UITableViewDataSource
 extension RecipeSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.recipeSearchListTableView {
-            return self.recipeList.count
-        } else {
+        switch tableViewDataSource {
+        case .suggestions:
             return self.suggestedSearchKeys.count
+        case .searchResult:
+            return self.recipeList.count
+            
         }
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if tableView == self.recipeSearchListTableView {
-        let cell = tableView.dequeueReusableCell(cellClass: RecipeTableViewCell.self)
-        if recipeList.count > 0 {
-            if let recipe = self.recipeList[indexPath.row].recipe {
-                cell.configCell(recipe: recipe)
+            let cell = tableView.dequeueReusableCell(cellClass: RecipeTableViewCell.self)
+            if recipeList.count > 0 {
+                if let recipe = self.recipeList[indexPath.row].recipe {
+                    cell.configCell(recipe: recipe)
+                }
             }
-        }
-
-        return cell
+            return cell
         } else {
             let cell = tableView.dequeueReusableCell(cellClass: UITableViewCell.self)
-            
             cell.textLabel!.text = self.suggestedSearchKeys[indexPath.row]
-            
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.recipeSearchListTableView {
-            RecipeSearchRouter.pushToRecipeDetialsScreen(recipe: self.recipeList[indexPath.row],
-                                                         navigationConroller: self.navigationController!)
-        } else {
-            searchTextField.text = self.suggestedSearchKeys[indexPath.row]
-            self.recipeSeaarchSuggestedKeyWordsTableView.isHidden = true
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            switch tableViewDataSource {
+            case .suggestions:
+                searchTextField.text = self.suggestedSearchKeys[indexPath.row]
+                self.recipeSeaarchSuggestedKeyWordsTableView.isHidden = true
+            case .searchResult:
+                RecipeSearchRouter.pushToRecipeDetialsScreen(recipe: self.recipeList[indexPath.row],
+                                                             navigationConroller: self.navigationController!)
+            }
         }
     }
     
@@ -256,13 +270,13 @@ extension RecipeSearchViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.healthLabelsList.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(cellClass: HealthLabelCollectionViewCell.self, for: indexPath)
         cell.configCell(health: self.healthLabelsList[indexPath.row])
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedFilter = self.healthLabelsList[indexPath.row]
         self.updateListStatus = .refresh
@@ -280,8 +294,8 @@ extension RecipeSearchViewController: UICollectionViewDelegate, UICollectionView
 extension RecipeSearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: ((healthLabelsList[indexPath.row].size(withAttributes:
-                                                                    [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 11,
-                                                                                                                     weight: .medium)]).width) ) + 60,
+                                                                        [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 11,
+                                                                                                                         weight: .medium)]).width) ) + 60,
                       height: 25)
     }
 }
@@ -292,28 +306,12 @@ extension RecipeSearchViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        do {
-            let regex = try NSRegularExpression(pattern: ".*[^A-Za-z ].*",
-                                                options: [])
-            if regex.firstMatch(in: string,
-                                options: [],
-                                range: NSMakeRange(0,
-                                                   string.count)) != nil {
-                return false
-            }
+        if string.isStringContainsEnglishCharactersAndSpaces {
+            return false
         }
-        catch {
-            
-        }
-        
-        guard range.location == 0 else {
-            return true
-        }
-
         let newString = (textField.text! as NSString).replacingCharacters(in: range,
                                                                           with: string) as NSString
-        
-        let spacesCondition = newString.rangeOfCharacter(from: CharacterSet.whitespacesAndNewlines).location != 0
+        let spacesCondition = newString.isStartWithWhitespace
         return spacesCondition
     }
 }

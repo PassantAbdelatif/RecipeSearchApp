@@ -18,6 +18,7 @@ enum `Type`:String, Codable {
 struct NetworkError: Codable, Error, LocalizedError {
     
     var message: String?
+    var error: String?
     var type: Type?
     
     init () {}

@@ -54,11 +54,17 @@ class NetworkCall : NSObject{
                             completion(.failure(error))
                         }
                     default:
-                        
-                        let error = NSError(domain: response.debugDescription,
-                                            code: code,
-                                            userInfo: response.response?.allHeaderFields as? [String: Any])
-                        completion(.failure(error))
+                        // 300-399 ,400-499
+                        do {
+                            let businessError = try JSONDecoder().decode(
+                                [NetworkError].self,
+                                from: res)
+                            if businessError.count > 0 {
+                                completion(.failure(businessError.first!))
+                            }
+                        } catch {
+                            completion(.failure(NetworkError.parseError))
+                        }
                     }
                 }
             case .failure(let error):

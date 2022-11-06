@@ -50,7 +50,12 @@ class RecipeSearchInteractor: PresenterToInteractorRecipesProtocol {
                     
                 }
             case .failure(let error):
-                self.presenter?.sendDataFailed(error: error.localizedDescription)
+                if let networkError = error as? NetworkError {
+                    self.presenter?.sendDataFailed(error: networkError.message ?? networkError.error ?? "")
+                } else {
+                    self.presenter?.sendDataFailed(error: error.localizedDescription)
+                }
+                
             }
         }
     }
@@ -79,7 +84,7 @@ class RecipeSearchInteractor: PresenterToInteractorRecipesProtocol {
                             "crustacean-free",
                             "celery-free",
                             "mustard-free",
-                            "gluten-Free",
+                            "gluten-free",
                             "sesame-free",
                             "lupine-free",
                             "mollusk-free",
