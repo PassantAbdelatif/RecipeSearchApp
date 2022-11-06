@@ -94,13 +94,10 @@ extension RecipeSearchViewController {
             }
             
         }
-        
         self.recipeSearchListTableView.setupRefresh {
             self.updateListStatus = .refresh
             self.recipeSearchPresenter?.getRecipesSearchResult(updateListStatus: .refresh)
         }
-        
-        
     }
     
     func registerCells() {
