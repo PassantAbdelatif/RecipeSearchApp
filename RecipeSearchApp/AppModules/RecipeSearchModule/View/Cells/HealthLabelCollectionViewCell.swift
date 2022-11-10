@@ -15,7 +15,7 @@ class HealthLabelCollectionViewCell: UICollectionViewCell {
         didSet{
             if self.isSelected {
                 UIView.animate(withDuration: 0.3) { // for animation effect
-                    self.mainContentView.backgroundColor = UIColor.systemMint
+                    self.mainContentView.backgroundColor = UIColor.green
                     self.healthLabel.textColor = UIColor.white
                 }
             }

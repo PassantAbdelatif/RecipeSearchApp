@@ -15,6 +15,7 @@ target 'RecipeSearchApp' do
   
   pod "Kingfisher", :git => 'https://github.com/onevcat/Kingfisher.git', :branch => 'version6-xcode13'
   pod 'SwiftPullToRefresh'
+  pod "SwiftyMocky"
 
   target 'RecipeSearchAppTests' do
     inherit! :search_paths

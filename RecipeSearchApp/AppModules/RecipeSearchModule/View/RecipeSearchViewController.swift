@@ -212,6 +212,11 @@ extension RecipeSearchViewController: PresenterToViewRecipesProtocol {
             self.recipeList.append(contentsOf: recipeList)
         }
         tableViewDataSource = .searchResult
+        if self.recipeList.isEmpty {
+            recipeHealthLabelCollectionView.isHidden = true
+        } else {
+            recipeHealthLabelCollectionView.isHidden = false
+        }
         recipeSearchListTableView.reloadData(isEmpty:  self.recipeList.isEmpty,
                                              noDataView: self.emptyView)
         recipeSearchListTableView.endLoadingMoreAndRefreshing()

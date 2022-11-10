@@ -4,11 +4,14 @@ PODS:
   - Kingfisher (6.3.1)
   - ObjectMapper (3.5.3)
   - Result (4.1.0)
+  - Sourcery (1.6.0)
   - SwiftMessages (9.0.6):
     - SwiftMessages/App (= 9.0.6)
   - SwiftMessages/App (9.0.6)
   - SwiftPullToRefresh (3.1.1)
   - SwiftyJSON (5.0.1)
+  - SwiftyMocky (4.1.0):
+    - Sourcery (= 1.6.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0)
@@ -19,6 +22,7 @@ DEPENDENCIES:
   - SwiftMessages
   - SwiftPullToRefresh
   - SwiftyJSON (~> 5)
+  - SwiftyMocky
 
 SPEC REPOS:
   trunk:
@@ -26,9 +30,11 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - ObjectMapper
     - Result
+    - Sourcery
     - SwiftMessages
     - SwiftPullToRefresh
     - SwiftyJSON
+    - SwiftyMocky
 
 EXTERNAL SOURCES:
   Kingfisher:
@@ -46,10 +52,12 @@ SPEC CHECKSUMS:
   Kingfisher: 8b783c3d7be73a99b2172a743a5bc0a4dd331d79
   ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Sourcery: 744f43178637c79bf23127dfe34e2103b3f28499
   SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
   SwiftPullToRefresh: f61d67439c5b8d66420fe57193cab8c279398e7a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  SwiftyMocky: 014739247afadb65efb5bb92ede32c22b9365762
 
-PODFILE CHECKSUM: a5a1530bbc9de8b4a1c5af5a6f77bfa59b3534eb
+PODFILE CHECKSUM: 3de961a67e8088df393b350238ffe3d3f3870f79
 
 COCOAPODS: 1.11.3

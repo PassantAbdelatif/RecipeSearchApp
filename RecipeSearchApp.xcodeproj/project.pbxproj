@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		314CA1923D5DC385F1F6B6CC /* Pods_RecipeSearchApp_RecipeSearchAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA7BE5719CDB1445786D18E /* Pods_RecipeSearchApp_RecipeSearchAppUITests.framework */; };
 		81257ACC0CE2276EA8A0CF3F /* Pods_RecipeSearchApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E6A0956D1BE2FFF02E82C8 /* Pods_RecipeSearchApp.framework */; };
+		D704E57C2917E73B00D7018A /* RecipeSearchSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D704E57B2917E73B00D7018A /* RecipeSearchSpy.swift */; };
 		D74705DB2915D2AF00BF43F1 /* UICollectionView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74705DA2915D2AF00BF43F1 /* UICollectionView+Register.swift */; };
 		D74705DD2915D30E00BF43F1 /* UITableView+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74705DC2915D30E00BF43F1 /* UITableView+Register.swift */; };
 		D74705E02915E51E00BF43F1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74705DF2915E51E00BF43F1 /* BaseViewController.swift */; };
@@ -17,7 +18,7 @@
 		D7B774D52911FC930000DB67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774D42911FC930000DB67 /* SceneDelegate.swift */; };
 		D7B774DC2911FC980000DB67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7B774DB2911FC980000DB67 /* Assets.xcassets */; };
 		D7B774DF2911FC980000DB67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7B774DD2911FC980000DB67 /* LaunchScreen.storyboard */; };
-		D7B774EA2911FC990000DB67 /* RecipeSearchAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774E92911FC990000DB67 /* RecipeSearchAppTests.swift */; };
+		D7B774EA2911FC990000DB67 /* RecipeSearchListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774E92911FC990000DB67 /* RecipeSearchListTests.swift */; };
 		D7B774F42911FC990000DB67 /* RecipeSearchAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774F32911FC990000DB67 /* RecipeSearchAppUITests.swift */; };
 		D7B774F62911FC990000DB67 /* RecipeSearchAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B774F52911FC990000DB67 /* RecipeSearchAppUITestsLaunchTests.swift */; };
 		D7B7751529120FE60000DB67 /* ProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7751429120FE60000DB67 /* ProviderExtension.swift */; };
@@ -62,6 +63,7 @@
 		D7C3EFC02916FF36000027C7 /* RecipeDetailsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3EFBF2916FF36000027C7 /* RecipeDetailsProtocols.swift */; };
 		D7C3EFC229171B9C000027C7 /* UIApplication+ShareExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3EFC129171B9B000027C7 /* UIApplication+ShareExtension.swift */; };
 		D7C3EFC529171EEB000027C7 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3EFC429171EEB000027C7 /* AppConstants.swift */; };
+		D7C3EFCA2917E19D000027C7 /* RecipeSearchListMockInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C3EFC92917E19D000027C7 /* RecipeSearchListMockInteractor.swift */; };
 		D9C524C2C5EF2C4D82F0B7E3 /* Pods_RecipeSearchAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135717CBB3C08239DF425D64 /* Pods_RecipeSearchAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,7 @@
 		B7E6A0956D1BE2FFF02E82C8 /* Pods_RecipeSearchApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeSearchApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2E576F09AC5028BD865065 /* Pods-RecipeSearchAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeSearchAppTests.debug.xcconfig"; path = "Target Support Files/Pods-RecipeSearchAppTests/Pods-RecipeSearchAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C02BE669A35E11C7642800D1 /* Pods-RecipeSearchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeSearchApp.release.xcconfig"; path = "Target Support Files/Pods-RecipeSearchApp/Pods-RecipeSearchApp.release.xcconfig"; sourceTree = "<group>"; };
+		D704E57B2917E73B00D7018A /* RecipeSearchSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchSpy.swift; sourceTree = "<group>"; };
 		D74705DA2915D2AF00BF43F1 /* UICollectionView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Register.swift"; sourceTree = "<group>"; };
 		D74705DC2915D30E00BF43F1 /* UITableView+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Register.swift"; sourceTree = "<group>"; };
 		D74705DF2915E51E00BF43F1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +106,7 @@
 		D7B774DE2911FC980000DB67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7B774E02911FC980000DB67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7B774E52911FC990000DB67 /* RecipeSearchAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeSearchAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7B774E92911FC990000DB67 /* RecipeSearchAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchAppTests.swift; sourceTree = "<group>"; };
+		D7B774E92911FC990000DB67 /* RecipeSearchListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchListTests.swift; sourceTree = "<group>"; };
 		D7B774EF2911FC990000DB67 /* RecipeSearchAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipeSearchAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B774F32911FC990000DB67 /* RecipeSearchAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchAppUITests.swift; sourceTree = "<group>"; };
 		D7B774F52911FC990000DB67 /* RecipeSearchAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 		D7C3EFBF2916FF36000027C7 /* RecipeDetailsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsProtocols.swift; sourceTree = "<group>"; };
 		D7C3EFC129171B9B000027C7 /* UIApplication+ShareExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+ShareExtension.swift"; sourceTree = "<group>"; };
 		D7C3EFC429171EEB000027C7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		D7C3EFC92917E19D000027C7 /* RecipeSearchListMockInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchListMockInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,7 +262,8 @@
 		D7B774E82911FC990000DB67 /* RecipeSearchAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				D7B774E92911FC990000DB67 /* RecipeSearchAppTests.swift */,
+				D7C3EFC82917E15B000027C7 /* RecipeSearchListTests */,
+				D7B774E92911FC990000DB67 /* RecipeSearchListTests.swift */,
 			);
 			path = RecipeSearchAppTests;
 			sourceTree = "<group>";
@@ -537,6 +542,15 @@
 				D7C3EFC429171EEB000027C7 /* AppConstants.swift */,
 			);
 			path = AppConstants;
+			sourceTree = "<group>";
+		};
+		D7C3EFC82917E15B000027C7 /* RecipeSearchListTests */ = {
+			isa = PBXGroup;
+			children = (
+				D7C3EFC92917E19D000027C7 /* RecipeSearchListMockInteractor.swift */,
+				D704E57B2917E73B00D7018A /* RecipeSearchSpy.swift */,
+			);
+			path = RecipeSearchListTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -832,7 +846,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7B774EA2911FC990000DB67 /* RecipeSearchAppTests.swift in Sources */,
+				D7C3EFCA2917E19D000027C7 /* RecipeSearchListMockInteractor.swift in Sources */,
+				D7B774EA2911FC990000DB67 /* RecipeSearchListTests.swift in Sources */,
+				D704E57C2917E73B00D7018A /* RecipeSearchSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,7 +1018,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1032,7 +1048,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
